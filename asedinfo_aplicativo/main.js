@@ -5776,6 +5776,11 @@ var appRoutes = [{
       return m.PagesModule;
     });
   }
+}, // Inicio - Para acceder directamente a la página de inscripción
+{
+  path: 'pages/competencia/estado',
+  redirectTo: '/pages/competencia/estado',
+  pathMatch: 'full'
 }, {
   path: '',
   redirectTo: '/pages/inicio',
@@ -5885,7 +5890,13 @@ var AuthGuard = /*#__PURE__*/function () {
 
 
         return true;
-      } // not logged in so redirect to login page with the return url
+      } // Inicio - Para acceder directamente a la página de estado
+
+
+      if (state.url.localeCompare("pages/competencia/estado") != 0) {
+        return true;
+      } // Fin - Para acceder directamente a la página de estado
+      // not logged in so redirect to login page with the return url
 
 
       this._router.navigate(['/pages/authentication/login-v2'], {
@@ -6225,7 +6236,7 @@ var AuthenticationService = /*#__PURE__*/function () {
           })
         );
         */
-      // Para obtener todos los aplicativo y sus recursos asignados
+      // Para obtener todos los aplicativos y sus recursos asignados
       // jbrito-20230821
 
       return this._http.post("".concat(environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.url_seguridad, "/seguridad/listarAplicacionMenu"), JsonEnvio).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_4__.map)(function (menu) {
@@ -9487,7 +9498,7 @@ NavbarComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_8__[
   },
   decls: 15,
   vars: 7,
-  consts: [["class", "navbar-header d-xl-block d-none", 4, "ngIf"], [1, "navbar-container", "d-flex", "content"], [1, "bookmark-wrapper", "d-flex", "align-items-center"], ["class", "nav navbar-nav d-xl-none", 4, "ngIf"], [1, "nav", "navbar-nav", "align-items-center", "ml-auto"], [1, "nav-item", "d-none", "d-lg-block"], [1, "nav-link", "nav-link-style", "btn", 3, "click"], [1, "ficon", "font-medium-5", "feather", 3, "ngClass"], ["ngbDropdown", "", 1, "nav-item", "dropdown-user"], ["id", "dropdown-user", "ngbDropdownToggle", "", "id", "navbarUserDropdown", "aria-haspopup", "true", "aria-expanded", "false", 1, "nav-link", "dropdown-toggle", "dropdown-user-link"], [4, "ngIf"], ["ngbDropdownMenu", "", "aria-labelledby", "navbarUserDropdown", 1, "dropdown-menu", "dropdown-menu-right"], ["ngbDropdownItem", "", 3, "click"], [3, "data-feather"], [1, "navbar-header", "d-xl-block", "d-none"], [1, "nav", "navbar-nav", "flex-row"], [1, "nav-item"], [1, "navbar-brand", 3, "routerLink"], [1, "brand-logo"], ["alt", "brand-logo", "width", "36", 3, "src"], ["src", "assets/images/logo/logo.png", 2, "width", "120px", "margin-top", "-5px", "margin-left", "17px"], [1, "nav", "navbar-nav", "d-xl-none"], [1, "nav-link", "menu-toggle", 3, "click"], [1, "user-nav", "d-sm-flex", "d-none"], [1, "user-name", "font-weight-bolder"], [1, "avatar"], ["src", "assets/images/portrait/small/user_info.png", "alt", "avatar", "height", "40", "width", "40", 1, "round"], [1, "avatar-status-online"]],
+  consts: [["class", "navbar-header d-xl-block d-none", 4, "ngIf"], [1, "navbar-container", "d-flex", "content"], [1, "bookmark-wrapper", "d-flex", "align-items-center"], ["class", "nav navbar-nav d-xl-none", 4, "ngIf"], [1, "nav", "navbar-nav", "align-items-center", "ml-auto"], [1, "nav-item", "d-none", "d-lg-block"], [1, "nav-link", "nav-link-style", "btn", 3, "click"], [1, "ficon", "font-medium-5", "feather", 3, "ngClass"], ["ngbDropdown", "", 1, "nav-item", "dropdown-user"], ["id", "dropdown-user", "ngbDropdownToggle", "", "id", "navbarUserDropdown", "aria-haspopup", "true", "aria-expanded", "false", 1, "nav-link", "dropdown-toggle", "dropdown-user-link"], [4, "ngIf"], ["ngbDropdownMenu", "", "aria-labelledby", "navbarUserDropdown", 1, "dropdown-menu", "dropdown-menu-right"], ["ngbDropdownItem", "", 3, "click"], [3, "data-feather"], [1, "navbar-header", "d-xl-block", "d-none"], [1, "nav", "navbar-nav", "flex-row"], [1, "nav-item"], [1, "navbar-brand", 3, "routerLink"], [1, "brand-logo"], ["alt", "brand-logo", "width", "36", 3, "src"], ["src", "assets/images/logo/logo.png", 2, "width", "120px", "margin-top", "-5px", "margin-left", "17px"], [1, "nav", "navbar-nav", "d-xl-none"], [1, "nav-link", "menu-toggle", 3, "click"], [1, "user-nav", "d-sm-flex", "d-none"], [1, "user-name", "font-weight-bolder"], [1, "avatar"], ["src", "assets/images/portrait/small/user_info.png", "alt", "avatar", "height", "35", "width", "35", 1, "round"], [1, "avatar-status-online"]],
   template: function NavbarComponent_Template(rf, ctx) {
     if (rf & 1) {
       _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵtemplate"](0, NavbarComponent_div_0_Template, 8, 3, "div", 0);
