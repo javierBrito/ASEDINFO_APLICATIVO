@@ -18,4 +18,7 @@ RewriteRule ^ - [L]
 # Redirigir cualquier otra solicitud a index.html
 RewriteRule ^ /index.html [L]
 
+# Configurar página de inicio de sesión para error 401 (No autorizado)
+ErrorDocument 401 /login
+
 cat: /home/sistema.asedinfo.com/public_html/.htaccess: No such file or directory
