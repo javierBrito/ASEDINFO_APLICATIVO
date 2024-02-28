@@ -9,9 +9,13 @@ RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
 AddHandler application/x-httpd-php80 .php
 Options +FollowSymlinks
 RewriteEngine On
+
+# Evitar la reescritura para archivos y directorios existentes
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
+
+# Redirigir cualquier otra solicitud a index.html
 RewriteRule ^ /index.html [L]
 
 cat: /home/sistema.asedinfo.com/public_html/.htaccess: No such file or directory
