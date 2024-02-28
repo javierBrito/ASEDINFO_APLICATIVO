@@ -10221,6 +10221,9 @@ function VerticalLayoutComponent_ng_template_11_Template(rf, ctx) {
 }
 
 var VerticalLayoutComponent = /*#__PURE__*/function () {
+  //public currentUser: any;
+  //public activarNavBar: boolean;
+
   /**
    * Constructor
    *
@@ -10232,7 +10235,11 @@ var VerticalLayoutComponent = /*#__PURE__*/function () {
     this._coreConfigService = _coreConfigService;
     this._elementRef = _elementRef; // Set the private defaults
 
-    this._unsubscribeAll = new rxjs__WEBPACK_IMPORTED_MODULE_9__.Subject();
+    this._unsubscribeAll = new rxjs__WEBPACK_IMPORTED_MODULE_9__.Subject(); // Para que no se muestre el layout vertical
+    //this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    //this.activarNavBar = false;
+    //this.activarNavBar = this.currentUser.identificacion !== 'minutoAminuto'
+    //console.log("this.currentUser.identificacion layout-vertical = ",this.currentUser.identificacion);
   } // Lifecycle Hooks
   // -----------------------------------------------------------------------------------------------------
 
