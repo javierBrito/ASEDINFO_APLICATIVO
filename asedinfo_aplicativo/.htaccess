@@ -12,6 +12,6 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
-RewriteRule ^ /asedinfo_aplicativo/index.html [L]
+RewriteRule ^ /index.html [L]
 
 cat: /home/sistema.asedinfo.com/public_html/.htaccess: No such file or directory
