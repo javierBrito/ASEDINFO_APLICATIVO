@@ -5874,14 +5874,32 @@ var AuthGuard = /*#__PURE__*/function () {
     value: function canActivate(route, state) {
       var currentUser = this._authenticationService.currentUserValue;
 
+      if (currentUser != null) {
+        currentUser = null;
+      }
+
       if (currentUser) {
-        // Inicio - Para acceder directamente a la página de 
+        //verificar acceso a las paginas por el menu asignado excepto la pagina de inicio
+        if (state.url.localeCompare("/pages/inicio") != 0) {
+          var acceso = this.permitirAcceso(state.url); // check if route is restricted by role
+          //if (route.data.roles && route.data.roles.indexOf(currentUser.role) === -1) {
+
+          if (acceso == false) {
+            // role not authorised so redirect to not-authorized page
+            this._router.navigate(['/pages/miscellaneous/not-authorized']);
+
+            return false;
+          }
+        } // Inicio - Para acceder directamente a la página de estado 
+
+
         if ((currentUser === null || currentUser === void 0 ? void 0 : currentUser.identificacion) == "minutoAminuto") {
           if (state.url.localeCompare("pages/competencia/estado") != 0) {
-            var acceso = this.permitirAcceso(state.url); // check if route is restricted by role
+            var _acceso = this.permitirAcceso(state.url); // check if route is restricted by role
             //if (route.data.roles && route.data.roles.indexOf(currentUser.role) === -1) {
 
-            if (acceso == false) {
+
+            if (_acceso == false) {
               // role not authorised so redirect to not-authorized page
               this._router.navigate(['/pages/miscellaneous/not-authorized']);
 
@@ -5889,20 +5907,6 @@ var AuthGuard = /*#__PURE__*/function () {
             }
 
             return true;
-          }
-        } //verificar acceso a las paginas por el menu asignado excepto la pagina de inicio
-
-
-        if (state.url.localeCompare("/pages/inicio") != 0) {
-          var _acceso = this.permitirAcceso(state.url); // check if route is restricted by role
-          //if (route.data.roles && route.data.roles.indexOf(currentUser.role) === -1) {
-
-
-          if (_acceso == false) {
-            // role not authorised so redirect to not-authorized page
-            this._router.navigate(['/pages/miscellaneous/not-authorized']);
-
-            return false;
           }
         } // authorised so return true
 
@@ -9442,13 +9446,14 @@ var NavbarComponent = /*#__PURE__*/function () {
     value: function ngOnInit() {
       var _this3 = this;
 
-      var _a; // get the currentUser details from localStorage
+      var _a, _b; // get the currentUser details from localStorage
 
 
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
       this.visibleSalir = "";
+      console.log("this.currentUser?.identificacion navbar = ", (_a = this.currentUser) === null || _a === void 0 ? void 0 : _a.identificacion);
 
-      if (((_a = this.currentUser) === null || _a === void 0 ? void 0 : _a.identificacion) == "minutoAminuto") {
+      if (((_b = this.currentUser) === null || _b === void 0 ? void 0 : _b.identificacion) == "minutoAminuto") {
         this.visibleSalir = "none";
       } // Subscribe to the config changes
 
