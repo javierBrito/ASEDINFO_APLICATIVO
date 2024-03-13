@@ -6116,9 +6116,10 @@ var JwtInterceptor = /*#__PURE__*/function () {
       var currentUser = this._authenticationService.currentUserValue;
       var isLoggedIn = currentUser && currentUser.token;
       var isApiUrl = request.url.startsWith(environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.url_seguridad);
-      var isApiUrlExterno = request.url.startsWith(environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.url_externo);
+      var isApiUrlWspAI = request.url.startsWith(environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.url_wspAI);
+      var isApiUrlWspND = request.url.startsWith(environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.url_wspND);
 
-      if (isLoggedIn && (isApiUrl || isApiUrlExterno)) {
+      if (isLoggedIn && (isApiUrl || isApiUrlWspAI || isApiUrlWspND)) {
         //agregar url a interceptar
         if (this.tokenExpired(currentUser.token)) {
           // token expired
@@ -9450,7 +9451,7 @@ var NavbarComponent = /*#__PURE__*/function () {
 
 
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      this.visibleSalir = ""; //console.log("this.currentUser?.identificacion navbar = ", this.currentUser?.identificacion)
+      this.visibleSalir = "";
 
       if (((_a = this.currentUser) === null || _a === void 0 ? void 0 : _a.identificacion) == "minutoAminuto") {
         this.visibleSalir = "none";
@@ -10399,12 +10400,12 @@ var environment = {
   production: false,
   hmr: false,
   prefijoApp: "SEG",
-  //url_seguridad: 'http://localhost:8080/seguridad-servicios',
   //url_seguridad: 'http://localhost:8080/asedinfo-servicios',
   url_seguridad: 'https://spring.asedinfo.com/asedinfo-servicios',
-  //url_externo: 'http://localhost:5000',
-  url_externo: 'https://whapp.asedinfo.com' //url_externo: 'http://51.79.53.164:5000',
-
+  //url_wspAI: 'http://localhost:5000',
+  url_wspAI: 'https://whapp.asedinfo.com',
+  //url_wspND: 'http://localhost:5001',
+  url_wspND: 'https://whapp.newdanceec.com'
 };
 /*
  * For easier debugging in development mode, you can import the following file
